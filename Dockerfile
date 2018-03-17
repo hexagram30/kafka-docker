@@ -1,4 +1,4 @@
-FROM anapsix/alpine-java
+FROM anapsix/alpine-java:8_jdk
 MAINTAINER Hexagram30 <https://github.com/hexagram30>
 
 ARG kafka_version=2.0.1

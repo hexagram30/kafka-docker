@@ -1,5 +1,36 @@
 #!/bin/bash -e
 
+sleep 3
+
+cat <<'BANNER'
+
+
+
+ ,*,
+ ***
+ '*'   ,*,   88    A P A C H E       ad88 88
+  i    ***   88                     d8"   88
+  i   ,'*'   88                     d8    88
+,888,/       88                     88    88
+88888        88                     88    88
+'888'\       88   ,d8  ,adPPYba,8 MM88MMM 88   ,d8  ,adPPYba,8
+  i   ',*,   88 ,a8"  a8"     "8a   88    88 ,a8"  a8"     "8a
+  i    ***   8888[    8b       d8   88    8888[    8b       d8
+ ,*,   '*'   88`"Yba, "8a,   ,a8"   88    88`"Yba, "8a,   ,a8"
+ ***         88   `Y8a `"8bbdP"Y8   88    88   `Y8a `"8bbdP"Y8
+ '*'
+             A   distributed   streaming   platform
+
+
+Version 1.0.1
+https://kafka.apache.org/
+
+
+
+BANNER
+
+sleep 2
+
 # Allow specific kafka versions to perform any unique bootstrap operations
 OVERRIDE_FILE="/opt/overrides/${KAFKA_VERSION}.sh"
 if [[ -x "$OVERRIDE_FILE" ]]; then
@@ -69,7 +100,7 @@ if [[ -n "$PORT_COMMAND" ]]; then
     IFS=$'\n'
     for VAR in $(env); do
         if [[ $VAR =~ ^KAFKA_ && "$VAR" =~ "_{PORT_COMMAND}" ]]; then
-	    eval "export ${VAR//_\{PORT_COMMAND\}/$PORT_VALUE}"
+            eval "export ${VAR//_\{PORT_COMMAND\}/$PORT_VALUE}"
         fi
     done
     IFS=$ORIG_IFS
